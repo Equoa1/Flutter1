@@ -26,7 +26,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   createAccountPressed() async {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(_matricula);
+        .hasMatch(_email);
     if (emailValid) {
       http.Response response =
           await AuthServices.register(_matricula, _name, _email, _password);
@@ -35,7 +35,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
+              builder: (BuildContext context) => const BottomNav(),
             ));
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
@@ -49,11 +49,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue,
         centerTitle: true,
         elevation: 0,
         title: const Text(
-          'Registration',
+          'Registro',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -68,8 +68,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 20,
             ),
             TextField(
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'Matricula',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
               ),
               onChanged: (value) {
                 _matricula = value;
@@ -79,8 +82,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 20,
             ),
             TextField(
-              decoration: const InputDecoration(
-                hintText: 'Name',
+              decoration: InputDecoration(
+                hintText: 'Nombre Completo',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
               ),
               onChanged: (value) {
                 _name = value;
@@ -90,8 +96,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 30,
             ),
             TextField(
-              decoration: const InputDecoration(
-                hintText: 'Email',
+              decoration: InputDecoration(
+                hintText: 'Correo Electronico',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
               ),
               onChanged: (value) {
                 _email = value;
@@ -102,8 +111,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             TextField(
               obscureText: true,
-              decoration: const InputDecoration(
-                hintText: 'Password',
+              decoration: InputDecoration(
+                hintText: 'Contraseña',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
               ),
               onChanged: (value) {
                 _password = value;
@@ -113,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 40,
             ),
             RoundedButton(
-              btnText: 'Create Account',
+              btnText: 'Crear Cuenta!',
               onBtnPressed: () => createAccountPressed(),
             ),
             const SizedBox(
@@ -128,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ));
               },
               child: const Text(
-                'already have an account',
+                'Tienes Cuenta?',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                 ),

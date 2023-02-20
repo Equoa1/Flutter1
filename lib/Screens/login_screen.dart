@@ -27,13 +27,13 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
+              builder: (BuildContext context) => const BottomNav(),
             ));
       } else {
         errorSnackBar(context, responseMap.values.first);
       }
     } else {
-      errorSnackBar(context, 'enter all required fields');
+      errorSnackBar(context, 'Ingrese Los Campos Faltantes');
     }
   }
 
@@ -41,11 +41,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.blue,
           centerTitle: true,
           elevation: 0,
           title: const Text(
-            'Login',
+            'Ingresar',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextField(
                 decoration: const InputDecoration(
-                  hintText: 'Enter your email',
+                  hintText: 'Matricula',
                 ),
                 onChanged: (value) {
                   _matricula = value;
@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 obscureText: true,
                 decoration: const InputDecoration(
-                  hintText: 'Enter your password',
+                  hintText: 'Ingrese Contraseña',
                 ),
                 onChanged: (value) {
                   _password = value;
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 30,
               ),
               RoundedButton(
-                btnText: 'LOG IN',
+                btnText: 'Entrar',
                 onBtnPressed: () => loginPressed(),
               )
             ],
