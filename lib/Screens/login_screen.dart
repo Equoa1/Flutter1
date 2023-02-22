@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const BottomNav(),
+              builder: (BuildContext context) => BottomNav(),
             ));
       } else {
         errorSnackBar(context, responseMap.values.first);
